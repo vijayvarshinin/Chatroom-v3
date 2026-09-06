@@ -159,7 +159,7 @@ html, body {
 .muted {
     font-size: 0.75rem;
     color: #949ba4;
-    margin-left: auto; /* Pushes the timestamp all the way to the right edge */
+    margin-left: auto; /* Pushes the time all the way to the right edge */
     text-align: right;
 }
 

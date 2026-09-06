@@ -1,0 +1,270 @@
+/* 1. Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2. Chat Layout Wrapper (Puts Sidebar & Chat Box Side-by-Side) */
+.chat-container {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2a4d7e;
+}
+
+/* 3. Sidebar Styling */
+.sidebar {
+    width: 260px !important;
+    min-width: 260px !important; /* Prevents room chat from shrinking the sidebar to 0px */
+    height: 100vh;
+    background-color: #1e1e24 !important;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-right: 1px solid #2b2d31;
+    color: #dbdee1;
+}
+
+.sidebar-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #949ba4;
+    margin-bottom: 10px;
+    padding-left: 8px;
+}
+
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.sidebar-item.room.active {
+    background-color: #35373c;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.hashtag {
+    color: #949ba4;
+    font-weight: bold;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #23a55a;
+    flex-shrink: 0;
+}
+
+/* 4. Chat Message Box Area */
+.message-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    background-color: #2a4d7e;
+    color: #dbdee1;
+}
+
+.message-box h2{
+    text-align: center;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    background-color: #383a40;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.inputs input {
+    flex: 1;
+    padding: 10px 14px;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.inputs button {
+    padding: 10px 20px;
+    background-color: #5865f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.inputs button:hover {
+    background-color: #4752c4;
+}
+
+.text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 4px;
+    word-break: break-word;
+    animation: messageSlide 0.15s ease-out;
+    transition: background-color 0.1s ease;
+}
+.text:hover {
+    background-color: #2e3035;
+}
+
+/* 2. Push timestamp to the far right */
+.muted {
+    font-size: 0.75rem;
+    color: #949ba4;
+    margin-left: auto; /* Pushes the timestamp all the way to the right edge */
+    text-align: right;
+}
+
+/* Center the form container on the screen */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #2a4d7e;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Card layout for the form */
+.chatroom {
+    background-color: #1e1e24;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    color: #dbdee1;
+}
+
+.chatroom h3 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 1.6rem;
+}
+
+.chatroom label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #949ba4;
+}
+
+.chatroom input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #2b2d31;
+    border: 1px solid #3f4147;
+    border-radius: 6px;
+    color: #ffffff;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 1.05rem;
+}
+
+.chatroom .join {
+    display: flex;
+    gap: 12px;
+}
+
+.chatroom .join input {
+    flex: 1;
+}
+
+.chatroom button {
+    padding: 14px 20px;
+    background-color: #5865f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.chatroom button:hover {
+    background-color: #4752c4;
+}
+
+.chatroom .create-button {
+    background-color: #2b2d31;
+    border: 1px solid #3f4147;
+    width: 100%;
+}
+
+.chatroom .create-button:hover {
+    background-color: #35373c;
+}
+
+.chatroom ul {
+    color: #f23f43;
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/*for words to slide up*/
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
